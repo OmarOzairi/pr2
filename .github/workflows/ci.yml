@@ -1,0 +1,18 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Say hello
+        run: echo "Hello from GitHub Actions"
+      - name: Get the code
+        uses: actions/checkout@v7
+      - name: List the files
+        run: ls
+      - name: Check the home page has a heading
+        run: grep -q "<h1>" index.html
+      - name: Check style sheet exists
+        run: test -f style.css
